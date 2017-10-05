@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,35 @@ namespace _3D_printing
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenFileButtin_Click(object sender, RoutedEventArgs e)
+        {
+            Stream myStream = null;
+            OpenFileDialog Dialog1 = new OpenFileDialog();
+
+            Dialog1.InitialDirectory = "d:\\";
+            Dialog1.Filter = "GCode files (*.gcode)|*.gcode";
+            Dialog1.FilterIndex = 2;
+            Dialog1.RestoreDirectory = true;
+
+            if (Dialog1.ShowDialog() == true)
+            {
+                try
+                {
+                    
+                   // if ((myStream = Dialog1.OpenFile()) != null)
+                   // {
+                        FilePathBox.Text = System.IO.Path.GetFullPath(Dialog1.FileName);
+
+                    //}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+           
         }
     }
 }
