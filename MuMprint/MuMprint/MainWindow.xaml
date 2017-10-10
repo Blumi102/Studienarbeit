@@ -1,0 +1,28 @@
+﻿<Window x:Class="MuMprint.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MuMprint"
+        mc:Ignorable="d"
+        Title="MuMprint" Height="694.636" Width="863.41">
+    <Grid>
+        <Button x:Name="Durchsuchen" Content="Durchsuchen" HorizontalAlignment="Left" Margin="685,30,0,0" VerticalAlignment="Top" Width="139" Height="26"/>
+        <ProgressBar x:Name="ProgressBar1" Margin="30,0,32.8,163.8" Height="23" VerticalAlignment="Bottom" Value="60" SmallChange="1" Foreground="#FF009999"/>
+        <TextBox x:Name="PfadGcode" HorizontalAlignment="Left" Height="27" Margin="95,30,0,0" TextWrapping="Wrap" Text="Dateipfad" VerticalAlignment="Top" Width="585" VerticalContentAlignment="Center"/>
+        <Label x:Name="Label1" Content="G-Code:" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="StartDruck" Content="Druck starten" IsEnabled="True" Margin="0,0,231.8,29.8" HorizontalAlignment="Right" Width="96" Height="36" VerticalAlignment="Bottom" Click="StartDruck_Click"/>
+        <Button x:Name="PauseDruck" Content="Pause" IsEnabled="False" Margin="0,0,130.8,29.8" HorizontalAlignment="Right" Width="96" Height="36" VerticalAlignment="Bottom"/>
+        <Button x:Name="AbbrechenDruck" Content="Abbrechen" IsEnabled="False" Margin="0,0,32.8,29.8" HorizontalAlignment="Right" Width="93" Height="36" VerticalAlignment="Bottom"/>
+        <Label x:Name="Label5" Content="Verbleibende Zeit:" HorizontalAlignment="Left" Height="30" Margin="30,537,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="Restzeit" Content="Unbekannt" HorizontalAlignment="Left" Margin="142,537,0,0" VerticalAlignment="Top" Width="167" Height="30"/>
+        <Label x:Name="Label4" Content="Abgeschlossen:" HorizontalAlignment="Left" Margin="30,506,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ProzentLabel" Content="0%" HorizontalAlignment="Left" Margin="142,506,0,0" VerticalAlignment="Top" Width="123"/>
+        <Canvas HorizontalAlignment="Left" Height="302" Margin="30,118,0,0" VerticalAlignment="Top" Width="493" Background="#FFEBEBEB"/>
+        <Label x:Name="Label2" Content="Vorschau:" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="30,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Label3" Content="Fortschritt:" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="30,435,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelVoraussZeit" Content="Voraussichtliche Druckdauer: " HorizontalAlignment="Left" Margin="528,118,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="VoraussZeit" Content="" HorizontalAlignment="Left" Margin="698,118,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
