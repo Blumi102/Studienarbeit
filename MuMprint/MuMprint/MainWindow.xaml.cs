@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -13,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FileHandling;
 
 namespace MuMprint
 {
@@ -24,12 +27,40 @@ namespace MuMprint
         public MainWindow()
         {
             InitializeComponent();
-            LabelVoraussZeit.Visibility = Visibility.Hidden;
+
+            #region Set starting conditions
+            //Voraussichtliche Zeit kann erst nach einlesen des gCodes angezeigt werden
+            LabelVoraussZeit.Visibility = Visibility.Hidden; 
+
+            //Programm status aus der Progressbar in Prozentanzeige übernehmen
+            if (ProzentLabel != null) 
+            {
+                ProzentLabel.Content = ProgressBar1.Value.ToString() + "%";
+            }
+            #endregion
         }
 
+        #region ButtonHandling
         private void StartDruck_Click(object sender, RoutedEventArgs e)
         {
-
+            ProgressBar1.Value = ProgressBar1.Value + 1;
         }
+
+        private void Durchsuchen_Click(object sender, RoutedEventArgs e)
+        {     
+            PfadGcode.Text = OpenGCode.Open_Gcode();
+        }
+        #endregion
+
+        #region Printing
+        private void ProgressBar1_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //Programm status aus der Progressbar in Prozentanzeige übernehmen
+            if (ProzentLabel != null)
+            {
+                ProzentLabel.Content = ProgressBar1.Value.ToString() + "%";
+            }
+        }
+        #endregion
     }
 }
