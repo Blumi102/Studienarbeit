@@ -33,8 +33,7 @@ namespace _3D_printing
             OpenFileDialog Dialog1 = new OpenFileDialog();
 
             Dialog1.InitialDirectory = "d:\\";
-            Dialog1.Filter = "GCode files (*.gcode)|*.gcode";
-            Dialog1.FilterIndex = 2;
+            d
             Dialog1.RestoreDirectory = true;
 
             if (Dialog1.ShowDialog() == true)
