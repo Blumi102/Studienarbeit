@@ -48,7 +48,7 @@ namespace MuMprint
 
         private void Durchsuchen_Click(object sender, RoutedEventArgs e)
         {     
-            PfadGcode.Text = OpenGCode.Open_Gcode();
+            PfadGcode.Text = GCode.HandleGCode();
         }
         #endregion
 
