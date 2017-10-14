@@ -8,7 +8,7 @@ using MuMprint;
 namespace Printing
 {
 
-    class Printing
+    public class Printing
     {
         public static bool relativeCoordinates = false;
         public static List<Command> Commands = new List<Command>();

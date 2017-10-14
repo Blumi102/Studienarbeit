@@ -18,8 +18,7 @@ namespace FileHandling
         /// The return value is the path of the selected file.
         /// </returns>
         public static string HandleGCode()
-        {
-            
+        {          
             OpenFileDialog OpenGC = new OpenFileDialog();
             OpenGC.Title = "G-Code öffnen";
             OpenGC.Filter = "GCode files (*.gcode)|*.gcode";
@@ -33,7 +32,12 @@ namespace FileHandling
                     while (!OpenedFile.EndOfStream)
                     {
                         CurLine = OpenedFile.ReadLine();
-                        ReadOutFile(CurLine);                      
+
+                        if (!CurLine.StartsWith(";")) //hide commands
+                        {
+                            MuMprint.Command com = new MuMprint.Command(CurLine);
+                            Printing.Printing.Commands.Add(com);
+                        }
                     }                   
             
                     OpenedFile.Close();
@@ -46,35 +50,5 @@ namespace FileHandling
             }
             return "error";
         }
-
-        private static void ReadOutFile(string CurLine)
-        {   
-            if (!CurLine.StartsWith(";")) //hide commands
-            {
-                MessageBox.Show(CurLine);
-                int trenner = CurLine.IndexOf(" ");
-                if (trenner != 1)
-                {
-                    string Command = "";
-                    string Value = "";
-
-                    for (int i = 0; i < trenner; i++)
-                    {
-                        Command += CurLine[i];
-                    }
-
-                    for (int i = trenner+1; i<= CurLine.Length-1; i++)
-                    {
-                        Value += CurLine[i];
-                    }
-
-                    MuMprint.Command instruction = new MuMprint.Command(Command, Value);                 
-                    Printing.Printing.Commands.Add(instruction);
-
-    }
-
-            }
-        }
-
     }
 }

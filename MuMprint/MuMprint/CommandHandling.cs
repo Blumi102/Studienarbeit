@@ -10,34 +10,53 @@ namespace MuMprint
 {
     public class Command
     {
+        string _Command = "";
+        string _Value = "";
         public Instructions Instruction = Instructions.NaN;
         public Point3D coordinates = new Point3D(0, 0, 0);
-        public char ValueChar = ' ';
-        public int Value = 0;
 
-        public Command(string setInstruction, string setValue)
+
+        public Command(string CurLine)
         {
-            switch (setInstruction)
+            int trenner = CurLine.IndexOf(" ");
+            if (trenner != 1)
+            {
+                for (int i = 0; i < trenner; i++)
+                {
+                    _Command += CurLine[i];
+                }
+
+                for (int i = trenner + 1; i <= CurLine.Length - 1; i++)
+                {
+                    _Value += CurLine[i];
+                }
+            }
+                switch (_Command)
             {
                 case "G1":
                     Instruction = Instructions.G1;
                     //Lineare Bewegung
-                    G1(setValue, coordinates);
+                    this.coordinates = Utilities.getCoordinates(_Value);
                     return;
 
                 case "G28":
                     Instruction = Instructions.G28;
                     //Homing
+                    this.coordinates.X = 0;
+                    this.coordinates.Y = 0;
+                    this.coordinates.Z = 0;
                     return;
 
                 case "G90":
                     Instruction = Instructions.G90;
                     //Absolute Positionierung
+                    Printing.Printing.relativeCoordinates = false;
                     return;
 
                 case "G91":
                     Instruction = Instructions.G91;
                     //Relative Positionierung
+                    Printing.Printing.relativeCoordinates = true;
                     return;
 
                 case "G92":
@@ -63,41 +82,13 @@ namespace MuMprint
                 default:
                     Instruction = Instructions.NaN;
                     //Fehler: Befehl wurde nicht erkannt
+                    MessageBox.Show("Der eingelesene Fehler wurde nicht erkannt.", "Befehls - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
             }
         }
         public enum Instructions
         {
             G1, G28, G90, G91, G92, M104, M106, M109, NaN
-        }
-
-        private void G1(string _setValue, Point3D coordinates)
-        {
-            if (Printing.Printing.relativeCoordinates == false) //absolute Bemaßung
-            {
-                if (_setValue.IndexOf("X") != -1)
-                {
-                    int CurPos = _setValue.IndexOf("X")+1;
-                    int res = 0;
-                    bool EndOfString = false;
-                    string Value = "";
-                
-                    while(EndOfString == false &(int.TryParse(_setValue[CurPos].ToString(), out res)|_setValue[CurPos] == '.'))
-                    {
-                        Value += _setValue[CurPos];
-                        if (CurPos+1 < _setValue.Length)
-                        {
-                            CurPos += 1;
-                        }
-                        else
-                        {
-                            EndOfString = true;
-                        }
-                        
-                    }
-                    this.coordinates.X = Convert.ToDouble(Value.Replace('.', ','));
-                }
-            }
         }
     }
 }
