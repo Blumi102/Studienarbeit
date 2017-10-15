@@ -23,6 +23,12 @@
         <Label x:Name="Label3" Content="Fortschritt:" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="30,435,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LabelVoraussZeit" Content="Voraussichtliche Druckdauer: " HorizontalAlignment="Left" Margin="528,118,0,0" VerticalAlignment="Top"/>
         <Label x:Name="VoraussZeit" Content="" HorizontalAlignment="Left" Margin="698,118,0,0" VerticalAlignment="Top"/>
-
+        <Viewport3D x:Name="viewport" HorizontalAlignment="Left" Height="302" Margin="30,118,0,0" VerticalAlignment="Top" Width="493">
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="camera" LookDirection="0,0,-1" Position="0,0,5" FieldOfView="45" />
+            </Viewport3D.Camera>
+            <ModelVisual3D x:Name="model">
+            </ModelVisual3D>
+        </Viewport3D>
     </Grid>
 </Window>

@@ -12,6 +12,9 @@ namespace Printing
     {
         public static bool relativeCoordinates = false;
         public static List<Command> Commands = new List<Command>();
+        public static double E = 0.0;
+        public static double Temp = 0.0;
+        public static double Speed = 0;
 
         public static void SettingUp()
         {

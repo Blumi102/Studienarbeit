@@ -15,7 +15,6 @@ namespace MuMprint
         public Instructions Instruction = Instructions.NaN;
         public Point3D coordinates = new Point3D(0, 0, 0);
 
-
         public Command(string CurLine)
         {
             int trenner = CurLine.IndexOf(" ");
@@ -33,10 +32,16 @@ namespace MuMprint
             }
                 switch (_Command)
             {
+                case "G0":
+                    Instruction = Instructions.G1;
+                    //Lineare Bewegung
+                    Utilities.GetMoveValues(_Value, this);
+                    return;
+
                 case "G1":
                     Instruction = Instructions.G1;
                     //Lineare Bewegung
-                    this.coordinates = Utilities.getCoordinates(_Value);
+                    Utilities.GetMoveValues(_Value, this);
                     return;
 
                 case "G28":
@@ -62,6 +67,7 @@ namespace MuMprint
                 case "G92":
                     Instruction = Instructions.G92;
                     //Aktuelle Position
+                    Utilities.GetMoveValues(_Value, this);
                     return;
 
                 case "M104":
@@ -82,7 +88,7 @@ namespace MuMprint
                 default:
                     Instruction = Instructions.NaN;
                     //Fehler: Befehl wurde nicht erkannt
-                    MessageBox.Show("Der eingelesene Fehler wurde nicht erkannt.", "Befehls - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Der eingelesene Befehl wurde nicht erkannt.", "Befehls - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
             }
         }
