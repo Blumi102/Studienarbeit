@@ -14,11 +14,12 @@ namespace MuMprint
         string _Value = "";
         public Instructions Instruction = Instructions.NaN;
         public Point3D coordinates = new Point3D(0, 0, 0);
+        public double E = 0.0;
 
         public Command(string CurLine)
         {
             int trenner = CurLine.IndexOf(" ");
-            if (trenner != 1)
+            if (trenner != 1) //-1?
             {
                 for (int i = 0; i < trenner; i++)
                 {
@@ -44,7 +45,7 @@ namespace MuMprint
                     Utilities.GetMoveValues(_Value, this);
                     return;
 
-                case "G28":
+                case "G28": //!!nur x-Achse nullen!
                     Instruction = Instructions.G28;
                     //Homing
                     this.coordinates.X = 0;

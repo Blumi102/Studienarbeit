@@ -18,10 +18,12 @@ namespace FileHandling
         /// The return value is the path of the selected file.
         /// </returns>
         public static string HandleGCode()
-        {          
-            OpenFileDialog OpenGC = new OpenFileDialog();
-            OpenGC.Title = "G-Code öffnen";
-            OpenGC.Filter = "GCode files (*.gcode)|*.gcode";
+        {
+            OpenFileDialog OpenGC = new OpenFileDialog
+            {
+                Title = "G-Code öffnen",
+                Filter = "GCode files (*.gcode)|*.gcode"
+            };
             try
             {
                 if (OpenGC.ShowDialog() == true)

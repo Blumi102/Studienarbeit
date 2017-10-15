@@ -44,7 +44,7 @@ namespace MuMprint
             //E-Koordinate
             if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("E")) //absolute Bemaßung
             {
-                Printing.Printing.E = GetValue('E', _setValue); ;
+                com.E = GetValue('E', _setValue); ;
             }
             else //relative Bemaßung
             {
