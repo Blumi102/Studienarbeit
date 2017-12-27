@@ -40,36 +40,18 @@ namespace MuMprint
             }
             #endregion
 
-            
         }
 
         #region ButtonHandling
         private void StartDruck_Click(object sender, RoutedEventArgs e)
         {
             ProgressBar1.Value = ProgressBar1.Value + 1;
-
-            Model3DGroup group = new Model3DGroup();
-
-            MeshGeometry3D m = new MeshGeometry3D();
-
-            m.Positions.Add(new Point3D(1, 0, 0));
-            m.Positions.Add(new Point3D(0, 1, 0));
-            m.Positions.Add(new Point3D(0, 0, 1));
-
-            m.TriangleIndices.Add(0);
-            m.TriangleIndices.Add(1);
-            m.TriangleIndices.Add(2);
-
-            group.Children.Add(new GeometryModel3D(m, new DiffuseMaterial(Brushes.Cyan)));
-
-            group.Children.Add(new DirectionalLight(Colors.White, new Vector3D(0, 0, -1)));
-
-            model.Content = group;
         }
 
         private void Durchsuchen_Click(object sender, RoutedEventArgs e)
         {     
-            PfadGcode.Text = GCode.HandleGCode();
+            PfadGcode.Text = GCodeReader.HandleGCode();
+           
         }
         #endregion
 
@@ -83,5 +65,11 @@ namespace MuMprint
             }
         }
         #endregion
+
+        private void Manuell_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Test_Control ControlWindow = new Test_Control();
+            ControlWindow.Show();
+        }
     }
 }

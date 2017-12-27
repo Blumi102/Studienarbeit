@@ -6,17 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.IO;
 using System.Windows;
+using System.Xml;
 
 namespace FileHandling
 {
-    public class GCode
-    {        
+    public class GCodeReader
+    {
         /// <summary>
         /// This method opens a GCode-File and reads in the included coordinates. 
         /// </summary>
         /// <returns>
         /// The return value is the path of the selected file.
         /// </returns>
+        /// 
+
+        public static double curX = 0.0;
+        public static double curY = 0.0;
+        public static double curZ = 0.0;
+        public static double curE = 0.0;
+
         public static string HandleGCode()
         {
             OpenFileDialog OpenGC = new OpenFileDialog
@@ -24,12 +32,14 @@ namespace FileHandling
                 Title = "G-Code öffnen",
                 Filter = "GCode files (*.gcode)|*.gcode"
             };
+
             try
             {
                 if (OpenGC.ShowDialog() == true)
-                {                    
+                {
                     StreamReader OpenedFile = new StreamReader(OpenGC.FileName);
                     String CurLine = "";
+
 
                     while (!OpenedFile.EndOfStream)
                     {
@@ -40,17 +50,47 @@ namespace FileHandling
                             MuMprint.Command com = new MuMprint.Command(CurLine);
                             Printing.Printing.Commands.Add(com);
                         }
-                    }                   
-            
+                    }
+
                     OpenedFile.Close();
                     return OpenGC.FileName;
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show("Die Datei konnte leider nicht geöffnet werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + e.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);        
+                MessageBox.Show("Die Datei konnte leider nicht geöffnet werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + e.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return "error";
         }
     }
+
+    public class XMLCreator
+        {
+            public static void CreatXML(List<MuMprint.Command> objects, string XMLpath)
+            {
+                // Ursprung oben hinten links
+                // Höhe 0 -> +; 1 -> -   
+
+                XmlDocument doc = new XmlDocument();    //Instanz eines XML Dokuments in den RAM laden 
+                XmlNode Project;
+             
+
+                //Root Element einfügen
+                Project = doc.CreateElement("My3DPrintingProject");
+                doc.AppendChild(Project);
+                int i = 0;
+
+            foreach (var item in objects)
+            {
+                i++;
+                Project.AppendChild(doc.CreateElement("Command"));
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString();
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString();
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString();
+            }
+                doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
+            }
+        
+        }
+
 }

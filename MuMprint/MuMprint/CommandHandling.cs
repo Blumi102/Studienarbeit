@@ -19,7 +19,8 @@ namespace MuMprint
         public Command(string CurLine)
         {
             int trenner = CurLine.IndexOf(" ");
-            if (trenner != 1) //-1?
+           
+            if (trenner != -1)
             {
                 for (int i = 0; i < trenner; i++)
                 {
@@ -31,7 +32,12 @@ namespace MuMprint
                     _Value += CurLine[i];
                 }
             }
-                switch (_Command)
+            else
+            {
+                _Command = CurLine;
+            }
+
+            switch (_Command)
             {
                 case "G0":
                     Instruction = Instructions.G1;
@@ -45,24 +51,44 @@ namespace MuMprint
                     Utilities.GetMoveValues(_Value, this);
                     return;
 
-                case "G28": //!!nur x-Achse nullen!
+                case "G28": 
                     Instruction = Instructions.G28;
                     //Homing
-                    this.coordinates.X = 0;
-                    this.coordinates.Y = 0;
-                    this.coordinates.Z = 0;
+                    if (_Value.Contains("X"))
+                    {
+                        this.coordinates.X = - FileHandling.GCodeReader.curX;
+                    }
+                    if (_Value.Contains("Y"))
+                    {
+                        this.coordinates.Y = - FileHandling.GCodeReader.curY;
+                    }
+                    if (_Value.Contains("Z"))
+                    {
+                        this.coordinates.Z = - FileHandling.GCodeReader.curZ;
+                    }
+                    if (_Value.Contains("E"))
+                    {
+                        this.E = - FileHandling.GCodeReader.curE;
+                    }
+                    if (!_Value.Contains("X") & !_Value.Contains("Y") & !_Value.Contains("Z") & !_Value.Contains("E"))
+                    {
+                        this.coordinates.X = -FileHandling.GCodeReader.curX;
+                        this.coordinates.Y = -FileHandling.GCodeReader.curY;
+                        this.coordinates.Z = -FileHandling.GCodeReader.curZ;
+                        this.E = -FileHandling.GCodeReader.curE;
+                    }
                     return;
 
                 case "G90":
                     Instruction = Instructions.G90;
                     //Absolute Positionierung
-                    Printing.Printing.relativeCoordinates = false;
+                    Printing.Printing.RelativeCoordinates = false;
                     return;
 
                 case "G91":
                     Instruction = Instructions.G91;
                     //Relative Positionierung
-                    Printing.Printing.relativeCoordinates = true;
+                    Printing.Printing.RelativeCoordinates = true;
                     return;
 
                 case "G92":
@@ -90,6 +116,7 @@ namespace MuMprint
                     Instruction = Instructions.NaN;
                     //Fehler: Befehl wurde nicht erkannt
                     MessageBox.Show("Der eingelesene Befehl wurde nicht erkannt.", "Befehls - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(_Value.ToString());
                     break;
             }
         }

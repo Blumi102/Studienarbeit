@@ -30,5 +30,6 @@
             <ModelVisual3D x:Name="model">
             </ModelVisual3D>
         </Viewport3D>
+        <Button x:Name="Manuell_Button" Content="Manuell" HorizontalAlignment="Left" Margin="30,599,0,0" VerticalAlignment="Top" Width="96" Height="36" Click="Manuell_Button_Click"/>
     </Grid>
 </Window>

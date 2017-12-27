@@ -9,52 +9,64 @@ namespace MuMprint
 {
     public class Utilities
     {
-        public static void GetMoveValues(string _setValue, Command com)
+        public static void GetMoveValues(string ComandValue, Command Com)
         {
             //X-Koordinate
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("X")) //absolute Bemaßung
+            if (ComandValue.Contains("X")) 
             {
-                com.coordinates.X = GetValue('X', _setValue); ;
-            }
-            else //relative Bemaßung oder nicht vorhanden
-            {
-                // this.coordinates.X = CurX - x;
+                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                {
+                    Com.coordinates.X = GetValue('X', ComandValue);
+                }
+                else //absolute Bemaßung
+                {
+                    Com.coordinates.X = GetValue('X', ComandValue) - FileHandling.GCodeReader.curX;
+                }
             }
 
             //Y-Koordinate
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("Y")) //absolute Bemaßung
+            if (ComandValue.Contains("Y"))
             {
-                com.coordinates.Y = GetValue('Y', _setValue); ;
-            }
-            else //relative Bemaßung oder nicht vorhanden
-            {
-                // this.coordinates.X = CurX - x;
+                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                {
+                    Com.coordinates.Y = GetValue('Y', ComandValue);
+                }
+                else //absolute Bemaßung
+                {
+                    Com.coordinates.Y = GetValue('Y', ComandValue) - FileHandling.GCodeReader.curY;
+                }
             }
 
             //Z-Koordinate
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("Z")) //absolute Bemaßung
+            if (ComandValue.Contains("Z"))
             {
-                com.coordinates.Z = GetValue('Z', _setValue); ;
-            }
-            else //relative Bemaßung oder nicht vorhanden
-            {
-                // this.coordinates.X = CurX - x;
+                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                {
+                    Com.coordinates.Z = GetValue('Z', ComandValue);
+                }
+                else //absolute Bemaßung
+                {
+                    Com.coordinates.Z = GetValue('Z', ComandValue) - FileHandling.GCodeReader.curZ;
+                }
             }
 
             //E-Koordinate
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("E")) //absolute Bemaßung
+            if (ComandValue.Contains("E"))
             {
-                com.E = GetValue('E', _setValue); ;
-            }
-            else //relative Bemaßung
-            {
-                // this.coordinates.X = CurX - x;
+                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                {
+                    Com.E = GetValue('E', ComandValue);
+                }
+                else //absolute Bemaßung
+                {
+                    Com.E = GetValue('E', ComandValue) - FileHandling.GCodeReader.curE;
+                }
             }
 
             //Geschwindigkeit
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("F")) //absolute Bemaßung
+            if (Printing.Printing.RelativeCoordinates == false & ComandValue.Contains("F")) //absolute Bemaßung
             {
-                Printing.Printing.Speed = GetValue('F', _setValue); ;           
+                Printing.Printing.Speed = GetValue('F', ComandValue);         
             }
             else //relative Bemaßung
             {
@@ -65,9 +77,9 @@ namespace MuMprint
         public static void GetTemp(string _setValue, Command com)
         {
             //Temperatur in °C
-            if (Printing.Printing.relativeCoordinates == false & _setValue.Contains("S")) //absolute Bemaßung
+            if (Printing.Printing.RelativeCoordinates == false & _setValue.Contains("S")) //absolute Bemaßung
             {
-                Printing.Printing.Temp = GetValue('S', _setValue); ;
+                Printing.Printing.Temp = GetValue('S', _setValue);
             }
             else //relative Bemaßung oder nicht enthalten
             {
@@ -82,7 +94,7 @@ namespace MuMprint
             bool EndOfString = false;
             string Value = "";
 
-            while (EndOfString == false & (int.TryParse(_setValue[CurPos].ToString(), out res) | _setValue[CurPos] == '.'))
+            while (EndOfString == false & _setValue[CurPos]!=';' & (int.TryParse(_setValue[CurPos].ToString(), out res) | _setValue[CurPos] == '.'))
             {
                 Value += _setValue[CurPos];
                 if (CurPos + 1 < _setValue.Length)
