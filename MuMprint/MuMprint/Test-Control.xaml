@@ -11,17 +11,17 @@
             <ColumnDefinition Width="192*"/>
             <ColumnDefinition Width="101*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="x_box" HorizontalAlignment="Left" Height="23" Margin="301,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" />
-        <TextBox x:Name="y_box" HorizontalAlignment="Left" Height="23" Margin="301,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="z_box" HorizontalAlignment="Left" Height="23" Margin="301,121,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <Label Content="x" HorizontalAlignment="Left" Margin="266,34,0,0" VerticalAlignment="Top" Height="23" RenderTransformOrigin="1.546,0.514"/>
-        <Label Content="z" HorizontalAlignment="Left" Margin="266,117,0,0" VerticalAlignment="Top" Height="23" RenderTransformOrigin="1.546,0.514"/>
-        <Label Content="y" HorizontalAlignment="Left" Margin="266,76,0,0" VerticalAlignment="Top" Height="23" RenderTransformOrigin="1.546,0.514"/>
+        <TextBox x:Name="x_box" HorizontalAlignment="Left" Height="23" Margin="301,38,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" GotFocus="x_box_GotFocus" />
+        <TextBox x:Name="y_box" HorizontalAlignment="Left" Height="23" Margin="301,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" GotFocus="y_box_GotFocus" />
+        <TextBox x:Name="z_box" HorizontalAlignment="Left" Height="23" Margin="301,121,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" GotFocus="z_box_GotFocus"/>
+        <Label Content="x" HorizontalAlignment="Left" Margin="266,34,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514"/>
+        <Label Content="z" HorizontalAlignment="Left" Margin="266,117,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514"/>
+        <Label Content="y" HorizontalAlignment="Left" Margin="266,76,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514"/>
         <Button x:Name="OK_button" Content="OK!" HorizontalAlignment="Left" Margin="301,164,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="home_button" Content="Homing" HorizontalAlignment="Left" Margin="301,204,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2" Click="home_button_Click"/>
         <Button Content="Set Up TCP-Connection" HorizontalAlignment="Left" Margin="55,121,0,0" VerticalAlignment="Top" Width="143" Height="53" Click="Button_Click_1"/>
-        <Label x:Name="IP_Box" Content="Server-IP:" HorizontalAlignment="Left" Margin="55,43,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="55,80,0,0" TextWrapping="Wrap" Text="Please enter the Server-IP" VerticalAlignment="Top" Width="143"/>
+        <Label x:Name="label" Content="Server-IP:" HorizontalAlignment="Left" Margin="55,43,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514"/>
+        <TextBox x:Name="IP_Box" HorizontalAlignment="Left" Height="23" Margin="55,80,0,0" TextWrapping="Wrap" Text="192.168.0.10" VerticalAlignment="Top" Width="143" GotFocus="IP_Box_GotFocus"/>
         <Label x:Name="Connected_Box" Content="" HorizontalAlignment="Left" Margin="55,186,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Width="143"/>
 
     </Grid>

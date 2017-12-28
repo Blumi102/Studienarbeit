@@ -30,15 +30,28 @@ namespace MuMprint
             string y = y_box.Text;
             string z = z_box.Text;
 
-            
+            MuMprint.Command com = new MuMprint.Command("G92 X" + x + " Y" + y + " Z" + z);
+            Printing.Printing.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+
+            try
+            {
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                Connected_Box.Content = "Connected to " + IP_Box.Text;
+            }
+            catch (Exception ex)
+            {
+                Connected_Box.Content = "Connection error";
+                MessageBox.Show("Die TCP-Verbdinung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Content.ToString(), Environment.CurrentDirectory + @"\Test.xml");
-                Connected_Box.Content = "Connected to " + IP_Box.Content.ToString();
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -58,8 +71,8 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Content.ToString(), Environment.CurrentDirectory + @"\Test.xml");
-                Connected_Box.Content = "Connected to " + IP_Box.Content.ToString();
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                Connected_Box.Content = "Connected to " + IP_Box.Text;
             }
             catch (Exception ex)
             {
@@ -67,6 +80,26 @@ namespace MuMprint
                 MessageBox.Show("Die TCP-Verbdinung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 throw;
             }
+        }
+
+        private void x_box_GotFocus(object sender, RoutedEventArgs e)
+        {
+            x_box.Text = "";
+        }
+
+        private void y_box_GotFocus(object sender, RoutedEventArgs e)
+        {
+            y_box.Text = "";
+        }
+
+        private void z_box_GotFocus(object sender, RoutedEventArgs e)
+        {
+            z_box.Text = "";
+        }
+
+        private void IP_Box_GotFocus(object sender, RoutedEventArgs e)
+        {
+            IP_Box.Text = "";
         }
     }
 }

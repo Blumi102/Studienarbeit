@@ -18,18 +18,19 @@ namespace MuMprint
             try
             {
                 client.Connect(ip, 5000);
+//https://www.entwickler-ecke.de/topic_Datei+ueber+Stream+versenden_100789.html&sid=ed63cf0d58e1e84100e96567d6727cad
 
-                // Den Netzwerk-Stream abrufen.
                 NetworkStream stream = client.GetStream();
 
-                // Einen BinaryWriter erstellen, um in den Stream zu schreiben.
-                BinaryWriter w = new BinaryWriter(stream);
+                FileStream fs = File.OpenRead(XMLpath);
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                stream.Write(bytes, 0, bytes.Length);
 
-                StreamReader file = new StreamReader(XMLpath);
-                w.Write(file.Read());
+                stream.Close();
 
-                // Einen BinaryReader erstellen, um aus dem Stream zu lesen.
-                // BinaryReader r = new BinaryReader(stream);              
+                client.Close();
+
             }
 
             catch (Exception err)

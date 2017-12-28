@@ -14,13 +14,13 @@ try:
             if not nachricht:
                 komm.close()
                 break
-            
+
             nachricht_str = nachricht.decode(encoding = 'UTF-8')
             print("[%s] %s" % (addr[0], nachricht_str))
-            
-            #antwort = input("Antwort: ")
-            antwort_byte = str.encode("Hallo")
-            komm.send(antwort_byte)
 
+            f = open("/home/pi/Documents/Test.xml", "w")
+            f.write(nachricht_str)
+            f.close()
+            
 finally:
     server.close()
