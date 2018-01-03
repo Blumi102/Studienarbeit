@@ -97,9 +97,5 @@ namespace MuMprint
             z_box.Text = "";
         }
 
-        private void IP_Box_GotFocus(object sender, RoutedEventArgs e)
-        {
-            IP_Box.Text = "";
-        }
     }
 }

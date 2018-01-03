@@ -56,26 +56,26 @@ namespace MuMprint
                     //Homing
                     if (_Value.Contains("X"))
                     {
-                        this.coordinates.X = - FileHandling.GCodeReader.curX;
+                        this.coordinates.X = - 1;
                     }
                     if (_Value.Contains("Y"))
                     {
-                        this.coordinates.Y = - FileHandling.GCodeReader.curY;
+                        this.coordinates.Y = - 1;
                     }
                     if (_Value.Contains("Z"))
                     {
-                        this.coordinates.Z = - FileHandling.GCodeReader.curZ;
+                        this.coordinates.Z = - 1;
                     }
                     if (_Value.Contains("E"))
                     {
-                        this.E = - FileHandling.GCodeReader.curE;
+                        this.E = - 1;
                     }
                     if (!_Value.Contains("X") & !_Value.Contains("Y") & !_Value.Contains("Z") & !_Value.Contains("E"))
                     {
-                        this.coordinates.X = -FileHandling.GCodeReader.curX;
-                        this.coordinates.Y = -FileHandling.GCodeReader.curY;
-                        this.coordinates.Z = -FileHandling.GCodeReader.curZ;
-                        this.E = -FileHandling.GCodeReader.curE;
+                        this.coordinates.X = - 1;
+                        this.coordinates.Y = - 1;
+                        this.coordinates.Z = - 1;
+                        this.E = - 1;
                     }
                     return;
 

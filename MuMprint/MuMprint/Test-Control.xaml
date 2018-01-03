@@ -19,7 +19,7 @@
         <Button x:Name="OK_button" Content="OK!" HorizontalAlignment="Left" Margin="103,284,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
         <Button x:Name="home_button" Content="Homing" HorizontalAlignment="Left" Margin="103,324,0,0" VerticalAlignment="Top" Width="120" Click="home_button_Click"/>
         <Label x:Name="label" Content="Server-IP:" HorizontalAlignment="Left" Margin="80,29,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514"/>
-        <TextBox x:Name="IP_Box" HorizontalAlignment="Left" Height="23" Margin="80,66,0,0" TextWrapping="Wrap" Text="192.168.0.10" VerticalAlignment="Top" Width="143" GotFocus="IP_Box_GotFocus"/>
+        <TextBox x:Name="IP_Box" HorizontalAlignment="Left" Height="23" Margin="80,66,0,0" TextWrapping="Wrap" Text="192.168.0.10" VerticalAlignment="Top" Width="143" />
         <Label x:Name="Connected_Box" Content="" HorizontalAlignment="Left" Margin="76,106,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Width="174"/>
 
     </Grid>
