@@ -27,19 +27,24 @@ endZ = 4
 GPIO.setup(step[MotR], GPIO.OUT)
 GPIO.setup(direct[MotR], GPIO.OUT)
 GPIO.setup(enable[MotR], GPIO.OUT)
+
 GPIO.setup(step[MotL], GPIO.OUT)
 GPIO.setup(direct[MotL], GPIO.OUT)
 GPIO.setup(enable[MotL], GPIO.OUT)
+
 GPIO.setup(step[MotT], GPIO.OUT)
 GPIO.setup(direct[MotT], GPIO.OUT)
 GPIO.setup(enable[MotT], GPIO.OUT)
 
+
 GPIO.output(step[MotR], False)
 GPIO.output(direct[MotR], True)
 GPIO.output(enable[MotR], True)
+
 GPIO.output(step[MotL], False)
 GPIO.output(direct[MotL], True)
 GPIO.output(enable[MotL], True)
+
 GPIO.output(step[MotT], False)
 GPIO.output(direct[MotT], True)
 GPIO.output(enable[MotT], True)

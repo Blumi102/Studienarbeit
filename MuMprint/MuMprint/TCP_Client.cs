@@ -17,7 +17,7 @@ namespace MuMprint
 
             try
             {
-                client.Connect(ip, 5000);
+                client.Connect(ip, 8000);
 //https://www.entwickler-ecke.de/topic_Datei+ueber+Stream+versenden_100789.html&sid=ed63cf0d58e1e84100e96567d6727cad
 
                 NetworkStream stream = client.GetStream();
