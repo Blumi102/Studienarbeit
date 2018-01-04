@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Media3D;
 
 namespace MuMprint
@@ -94,11 +95,10 @@ namespace MuMprint
             bool EndOfString = false;
             string Value = "";
 
-            double.TryParse(_setValue, out double test);
-
-            while (EndOfString == false & _setValue[CurPos]!=';' & (int.TryParse(_setValue[CurPos].ToString(), out res) | _setValue[CurPos] == '.' | _setValue[CurPos] == '-'))
+            while (EndOfString == false & _setValue[CurPos]!=';' & (int.TryParse(_setValue[CurPos].ToString(), out res) | _setValue[CurPos] == '.'| _setValue[CurPos] == ',' | _setValue[CurPos] == '-'))
             {
                 Value += _setValue[CurPos];
+                
                 if (CurPos + 1 < _setValue.Length)
                 {
                     CurPos += 1;
@@ -109,8 +109,8 @@ namespace MuMprint
                 }
 
             }
-            return Convert.ToDouble(Value);
-            //Value.Replace('.', ',')
+
+            return Convert.ToDouble(Value.Replace('.', ','));
         }
 
     }

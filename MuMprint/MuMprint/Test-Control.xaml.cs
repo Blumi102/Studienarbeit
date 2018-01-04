@@ -37,31 +37,31 @@ namespace MuMprint
             try
             {
                 TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
-                Connected_Box.Content = "Connected to " + IP_Box.Text;
+                Connected_Box.Text = "Connected";
             }
             catch (Exception ex)
             {
-                Connected_Box.Content = "Connection error";
-                MessageBox.Show("Die TCP-Verbdinung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                Connected_Box.Text = "Connection error";
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 throw;
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
-            }
-            catch (Exception ex)
-            {
-                Connected_Box.Content = "Connection error";
-                MessageBox.Show("Die TCP-Verbdinung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-                throw;
-            }
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Connected_Box.Text = "Connection error";
+        //        MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        throw;
+        //    }
 
 
-        }
+        //}
 
         private void home_button_Click(object sender, RoutedEventArgs e)
         {
@@ -72,12 +72,69 @@ namespace MuMprint
             try
             {
                 TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
-                Connected_Box.Content = "Connected to " + IP_Box.Text;
+                Connected_Box.Text = "Connected";
             }
             catch (Exception ex)
             {
-                Connected_Box.Content = "Connection error";
-                MessageBox.Show("Die TCP-Verbdinung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                Connected_Box.Text = "Connection error";
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
+        }
+
+        private void x_home_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MuMprint.Command com = new MuMprint.Command("G28 X");
+            Printing.Printing.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+
+            try
+            {
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                Connected_Box.Text = "Connected";
+            }
+            catch (Exception ex)
+            {
+                Connected_Box.Text = "Connection error";
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
+        }
+
+        private void y_home_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MuMprint.Command com = new MuMprint.Command("G28 Y");
+            Printing.Printing.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+
+            try
+            {
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                Connected_Box.Text = "Connected";
+            }
+            catch (Exception ex)
+            {
+                Connected_Box.Text = "Connection error";
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
+        }
+
+        private void z_home_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MuMprint.Command com = new MuMprint.Command("G28 Z");
+            Printing.Printing.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+
+            try
+            {
+                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                Connected_Box.Text = "Connected";
+            }
+            catch (Exception ex)
+            {
+                Connected_Box.Text = "Connection error";
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
                 throw;
             }
         }

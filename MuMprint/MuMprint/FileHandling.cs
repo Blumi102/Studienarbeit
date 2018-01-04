@@ -70,11 +70,12 @@ namespace FileHandling
             {
 
                 XmlDocument doc = new XmlDocument();    //Instanz eines XML Dokuments in den RAM laden 
-                XmlNode Project;
-             
 
-                //Root Element einfügen
-                Project = doc.CreateElement("My3DPrintingProject");
+                XmlDeclaration Deklaration = doc.CreateXmlDeclaration("1.0", "utf-8", "yes");
+                doc.AppendChild(Deklaration);
+
+            //Root Element einfügen
+                XmlNode Project = doc.CreateElement("My3DPrintingProject");
                 doc.AppendChild(Project);
                 int i = 0;
 
@@ -82,9 +83,9 @@ namespace FileHandling
             {
                 i++;
                 Project.AppendChild(doc.CreateElement("Command"));
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString();
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString();
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString();
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
+                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
             }
                 doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
             }
