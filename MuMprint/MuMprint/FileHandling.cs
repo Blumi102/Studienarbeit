@@ -68,8 +68,6 @@ namespace FileHandling
         {
             public static void CreatXML(List<MuMprint.Command> objects, string XMLpath)
             {
-                // Ursprung oben hinten links
-                // Höhe 0 -> +; 1 -> -   
 
                 XmlDocument doc = new XmlDocument();    //Instanz eines XML Dokuments in den RAM laden 
                 XmlNode Project;

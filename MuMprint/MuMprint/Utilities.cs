@@ -109,7 +109,8 @@ namespace MuMprint
                 }
 
             }
-            return Convert.ToDouble(Value.Replace('.', ','));
+            return Convert.ToDouble(Value);
+            //Value.Replace('.', ',')
         }
 
     }
