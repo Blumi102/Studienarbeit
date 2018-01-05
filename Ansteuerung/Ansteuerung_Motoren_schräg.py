@@ -52,12 +52,12 @@ GPIO.setup(endY, GPIO.IN)
 GPIO.setup(endZ, GPIO.IN)
 
 #Busy Variable
-MotLRbusy = 0
+#MotLRbusy = 0
 
-#Ansteurung Hauptfunktion für Motoren           #length in mm
+#Ansteuerung Hauptfunktion für Motoren           #length in mm
 def turn(motor, speed, length, direction):
     #if motor == MotL | MotR:
-    MotLRbusy = 1
+    #MotLRbusy = 1
     if direction == 1:
         GPIO.output(direct[motor], True)
     else:
@@ -74,7 +74,41 @@ def turn(motor, speed, length, direction):
         GPIO.output(step[motor], False)
         
     GPIO.output(enable[motor], True)
-    MotLRbusy = 0
+    #MotLRbusy = 0
+    return
+
+#Homing Michi
+def homing(axis):
+    if axis == 'X':
+		GPIO.output(direct[MotL], True
+		GPIO.output(direct[MotR], False
+    elif axis == 'Y':
+		GPIO.output(direct[MotL], False
+		GPIO.output(direct[MotR], False
+1
+    GPIO.output (enable[MotL], False)
+	GPIO.output(enable[MotR], False)
+	GPIO.output(enable[MotT], False)
+    
+    for i in range(0, 400000):
+		if (axis == 'X') & (endX == 1)|(axis == 'Y') & (endY == 1)
+			GPIO.output(step[MotL], True)
+			GPIO.output(step[MotR], True)
+			sleep(0.0008)
+			GPIO.output(step[MotL], False)
+			GPIO.output(step[MotR], False)
+		
+		elif (axis == 'Z') & (endZ == 1)
+			GPIO.output(step[MotT], True)
+			sleep(0.0003)
+			GPIO.output(step[MotL], False)
+			
+		else return
+        
+    #GPIO.output(enable[MotL], True)
+	#GPIO.output(enable[MotR], True)
+	#GPIO.output(enable[MotT], True)
+	
     return
 
 #Ansteuerung x-y-Achsenkreuz
@@ -116,17 +150,17 @@ def Zaxis(length, speed):
     Thread(target=turn, args=(MotT, speed, abs(length), dirMotT,) ).start()
 
 #Homing
-def homing(axis):
-    if axis == "X":
-        while GPIO.input(endX) == GPIO.HIGH:
-            if MotLRbusy == 0:
-                XYaxis(-10, 0, 0.0008)
-    elif axis == "Y":
-        while GPIO.input(endY) == GPIO.HIGH:
-            XYaxis(0, -1, 0.0008)
-    elif axis == "Z":
-        while GPIO.input(endZ) == GPIO.HIGH:
-            Zaxis(-10, 0.0003)
+#def homing(axis):
+#    if axis == "X":
+#        while GPIO.input(endX) == GPIO.HIGH:
+#           if MotLRbusy == 0:
+#                XYaxis(-10, 0, 0.0008)
+#    elif axis == "Y":
+#       while GPIO.input(endY) == GPIO.HIGH:
+#            XYaxis(0, -1, 0.0008)
+#    elif axis == "Z":
+#        while GPIO.input(endZ) == GPIO.HIGH:
+#            Zaxis(-10, 0.0003)
 
 #TCP Verbindungsaufbau
 try:
@@ -151,12 +185,12 @@ try:
             xml = minidom.parse('/home/pi/Dokumente/3D_Drucker/commands.xml')
             commandlist = xml.getElementsByTagName('Command')
                    
-            if (int(commandlist[0].attributes['X'].value) == -1) | (int(commandlist[0].attributes['Y'].value) == -1) | (int(commandlist[0].attributes['Z'].value) == -1): #homing
-                if int(commandlist[0].attributes['X'].value) == -1:
+            if (int(commandlist[0].attributes['X'].value) == -1000) | (int(commandlist[0].attributes['Y'].value) == -1000) | (int(commandlist[0].attributes['Z'].value) == -1000): #homing
+                if int(commandlist[0].attributes['X'].value) == -1000:
                     homing("X")
-                if int(commandlist[0].attributes['Y'].value) == -1:
+                if int(commandlist[0].attributes['Y'].value) == -1000:
                     homing("Y")
-                if int(commandlist[0].attributes['Z'].value) == -1:
+                if int(commandlist[0].attributes['Z'].value) == -1000:
                     homing("Z")
             else:                                                                                                                                       #normale Ansteuerung
                 XYaxis(int(commandlist[0].attributes['X'].value), int(commandlist[0].attributes['Y'].value), 0.0002)

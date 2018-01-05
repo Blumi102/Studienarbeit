@@ -31,16 +31,17 @@ namespace MuMprint
 
             #region Set starting conditions
             //Voraussichtliche Zeit kann erst nach einlesen des gCodes angezeigt werden
-            LabelVoraussZeit.Visibility = Visibility.Hidden; 
+            LabelVoraussZeit.Visibility = Visibility.Hidden;
 
             //Programm status aus der Progressbar in Prozentanzeige übernehmen
-            if (ProzentLabel != null) 
+            if (ProzentLabel != null)
             {
                 ProzentLabel.Content = ProgressBar1.Value.ToString() + "%";
             }
             #endregion
 
         }
+
 
         #region ButtonHandling
         private void StartDruck_Click(object sender, RoutedEventArgs e)
@@ -49,9 +50,9 @@ namespace MuMprint
         }
 
         private void Durchsuchen_Click(object sender, RoutedEventArgs e)
-        {     
+        {
             PfadGcode.Text = GCodeReader.HandleGCode();
-           
+
         }
         #endregion
 

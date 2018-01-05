@@ -7,6 +7,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using System.Xml;
+using CommandHandling;
 
 namespace FileHandling
 {
@@ -47,7 +48,7 @@ namespace FileHandling
 
                         if (!CurLine.StartsWith(";")) //hide commands
                         {
-                            MuMprint.Command com = new MuMprint.Command(CurLine);
+                            Command com = new Command(CurLine);
                             Printing.Printing.Commands.Add(com);
                         }
                     }
@@ -66,7 +67,7 @@ namespace FileHandling
 
     public class XMLCreator
         {
-            public static void CreatXML(List<MuMprint.Command> objects, string XMLpath)
+            public static void CreatXML(List<Command> objects, string XMLpath)
             {
 
                 XmlDocument doc = new XmlDocument();    //Instanz eines XML Dokuments in den RAM laden 

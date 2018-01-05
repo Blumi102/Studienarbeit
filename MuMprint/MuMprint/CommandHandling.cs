@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Media3D;
+using MuMprint;
 
-namespace MuMprint
+namespace CommandHandling
 {
     public class Command
     {

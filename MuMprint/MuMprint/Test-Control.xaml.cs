@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CommandHandling;
 
 namespace MuMprint
 {
@@ -30,7 +31,7 @@ namespace MuMprint
             string y = y_box.Text;
             string z = z_box.Text;
 
-            MuMprint.Command com = new MuMprint.Command("G92 X" + x + " Y" + y + " Z" + z);
+            Command com = new Command("G92 X" + x + " Y" + y + " Z" + z);
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -65,7 +66,7 @@ namespace MuMprint
 
         private void home_button_Click(object sender, RoutedEventArgs e)
         {
-            MuMprint.Command com = new MuMprint.Command("G28");
+            Command com = new Command("G28");
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -84,7 +85,7 @@ namespace MuMprint
 
         private void x_home_Button_Click(object sender, RoutedEventArgs e)
         {
-            MuMprint.Command com = new MuMprint.Command("G28 X");
+            Command com = new Command("G28 X");
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -103,7 +104,7 @@ namespace MuMprint
 
         private void y_home_Button_Click(object sender, RoutedEventArgs e)
         {
-            MuMprint.Command com = new MuMprint.Command("G28 Y");
+            Command com = new Command("G28 Y");
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -122,7 +123,7 @@ namespace MuMprint
 
         private void z_home_Button_Click(object sender, RoutedEventArgs e)
         {
-            MuMprint.Command com = new MuMprint.Command("G28 Z");
+            Command com = new Command("G28 Z");
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
