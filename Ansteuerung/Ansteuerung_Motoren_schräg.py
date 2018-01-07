@@ -21,9 +21,9 @@ MotL = 1 #links
 MotT = 2 #Tisch
 
 #Endschalter INIT
-endX = 4
-endY = 17
-endZ = 27
+endX = 17
+endY = 27
+endZ = 22
 
 #Motor GPIOs initialisieren
 GPIO.setup(step[MotR], GPIO.OUT)
@@ -79,31 +79,35 @@ def turn(motor, speed, length, direction):
 
 #Homing Michi
 def homing(axis):
+    
     if axis == 'X':
-		GPIO.output(direct[MotL], True
-		GPIO.output(direct[MotR], False
+        GPIO.output(direct[MotL], True)
+        GPIO.output(direct[MotR], False)
     elif axis == 'Y':
-		GPIO.output(direct[MotL], False
-		GPIO.output(direct[MotR], False
-1
+        GPIO.output(direct[MotL], False)
+        GPIO.output(direct[MotR], False)
+    elif axis == 'Z':
+        GPIO.output(direct[MotT], True)
+
     GPIO.output (enable[MotL], False)
-	GPIO.output(enable[MotR], False)
-	GPIO.output(enable[MotT], False)
+    GPIO.output(enable[MotR], False)
+    GPIO.output(enable[MotT], False)
     
     for i in range(0, 400000):
-		if (axis == 'X') & (endX == 1)|(axis == 'Y') & (endY == 1)
-			GPIO.output(step[MotL], True)
-			GPIO.output(step[MotR], True)
-			sleep(0.0008)
-			GPIO.output(step[MotL], False)
-			GPIO.output(step[MotR], False)
-		
-		elif (axis == 'Z') & (endZ == 1)
-			GPIO.output(step[MotT], True)
-			sleep(0.0003)
-			GPIO.output(step[MotL], False)
-			
-		else return
+        if ((axis == 'X') and (GPIO.input(endX) == GPIO.HIGH)) or ((axis == 'Y') and (GPIO.input(endY) == GPIO.HIGH)):
+            GPIO.output(step[MotL], True)
+            GPIO.output(step[MotR], True)
+            sleep(0.0008)
+            GPIO.output(step[MotL], False)
+            GPIO.output(step[MotR], False)
+
+        elif ((axis == 'Z') and (GPIO.input(endZ) == GPIO.HIGH)):
+            GPIO.output(step[MotT], True)
+            sleep(0.0003)
+            GPIO.output(step[MotT], False)
+
+        else:
+            return
         
     #GPIO.output(enable[MotL], True)
 	#GPIO.output(enable[MotR], True)
@@ -195,9 +199,6 @@ try:
             else:                                                                                                                                       #normale Ansteuerung
                 XYaxis(int(commandlist[0].attributes['X'].value), int(commandlist[0].attributes['Y'].value), 0.0002)
                 Zaxis(int(commandlist[0].attributes['Z'].value), 0.0003)
-
-            
-            print(int(commandlist[0].attributes['Z'].value))
             
 finally:
     server.close()
