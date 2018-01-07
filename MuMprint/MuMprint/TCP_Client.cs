@@ -26,9 +26,8 @@ namespace MuMprint
                 byte[] bytes = new byte[fs.Length];
                 fs.Read(bytes, 0, bytes.Length);
                 stream.Write(bytes, 0, bytes.Length);
-
+                fs.Close();
                 stream.Close();
-
                 client.Close();
 
             }
