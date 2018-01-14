@@ -47,6 +47,7 @@ namespace MuMprint
         private void StartDruck_Click(object sender, RoutedEventArgs e)
         {
             ProgressBar1.Value = ProgressBar1.Value + 1;
+            XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory +@"\Commands.xml");
         }
 
         private void Durchsuchen_Click(object sender, RoutedEventArgs e)

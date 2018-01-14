@@ -9,6 +9,10 @@ using CommandHandling;
 
 namespace MuMprint
 {
+    /// <summary>
+    /// This class includes useful little functions which help to read out data from a GCode-file and creat command objects based on this.
+    /// </summary>
+
     public class Utilities
     {
         public static void GetMoveValues(string ComandValue, Command Com)

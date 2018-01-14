@@ -7,6 +7,9 @@ using CommandHandling;
 
 namespace Printing
 {
+    /// <summary>
+    /// This class coordinates the action which are necessary for printing.
+    /// </summary>
 
     public class Printing
     {

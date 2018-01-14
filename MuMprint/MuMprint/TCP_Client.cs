@@ -9,6 +9,12 @@ using System.Windows;
 
 namespace MuMprint
 {
+    /// <summary>
+    /// This class is able to create a TCP-Connection where this program is on the client computer.
+    /// You have to enter the IP-address of the server you want to connect to.
+    /// In addition to that a XML-file can be read in and send to the server.
+    /// </summary>
+
     class TCP_Client
     {
         public static void CreateTCPClient(string ip, string XMLpath)

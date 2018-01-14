@@ -18,6 +18,8 @@ namespace MuMprint
     /// <summary>
     /// Interaktionslogik für Test_Control.xaml
     /// </summary>
+    /// 
+
     public partial class Test_Control : Window
     {
         public Test_Control()
@@ -48,21 +50,6 @@ namespace MuMprint
             }
         }
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Connected_Box.Text = "Connection error";
-        //        MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        throw;
-        //    }
-
-
-        //}
 
         private void home_button_Click(object sender, RoutedEventArgs e)
         {

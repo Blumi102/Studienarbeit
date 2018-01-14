@@ -67,6 +67,14 @@ namespace FileHandling
 
     public class XMLCreator
         {
+        /// <summary>
+        /// Creats a XML-file out of a objectlist generated from a GCode-file.
+        /// This XML is used to transfer the model data to the control device of the printer using TCP/IP.
+        /// </summary>
+        /// <param name="objects"></param>
+        /// <param name="XMLpath"></param>
+        /// 
+
             public static void CreatXML(List<Command> objects, string XMLpath)
             {
 
@@ -83,10 +91,10 @@ namespace FileHandling
             foreach (var item in objects)
             {
                 i++;
-                Project.AppendChild(doc.CreateElement("Command"));
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
-                Project.SelectSingleNode("Command").Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
+                Project.AppendChild(doc.CreateElement("Command" + i.ToString()));
+                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
+                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
+                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
             }
                 doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
             }

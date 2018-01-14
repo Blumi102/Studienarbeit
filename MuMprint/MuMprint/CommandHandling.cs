@@ -9,6 +9,11 @@ using MuMprint;
 
 namespace CommandHandling
 {
+    /// <summary>
+    /// This class represents every action of the printer which is defined in the read in GCode-file.
+    /// </summary>
+    /// 
+
     public class Command
     {
         string _Command = "";
