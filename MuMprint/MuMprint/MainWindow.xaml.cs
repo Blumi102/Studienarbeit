@@ -81,6 +81,8 @@ namespace MuMprint
 
         private void Manuell_Button_Click(object sender, RoutedEventArgs e)
         {
+            Printing.Printing.Commands.Clear();
+            PfadGcode.Text = "Dateipfad";
             Test_Control ControlWindow = new Test_Control();
             ControlWindow.Show();
         }

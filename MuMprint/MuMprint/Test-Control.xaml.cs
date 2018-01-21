@@ -34,6 +34,7 @@ namespace MuMprint
             string z = z_box.Text;
 
             Command com = new Command("G92 X" + x + " Y" + y + " Z" + z);
+            Printing.Printing.Commands.Clear();
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -74,6 +75,7 @@ namespace MuMprint
         private void x_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 X");
+            Printing.Printing.Commands.Clear();
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -93,6 +95,7 @@ namespace MuMprint
         private void y_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 Y");
+            Printing.Printing.Commands.Clear();
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -112,6 +115,7 @@ namespace MuMprint
         private void z_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 Z");
+            Printing.Printing.Commands.Clear();
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
@@ -143,5 +147,9 @@ namespace MuMprint
             z_box.Text = "";
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Printing.Printing.Commands.Clear();
+        }
     }
 }

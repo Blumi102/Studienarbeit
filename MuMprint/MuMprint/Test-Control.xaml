@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuMprint"
         mc:Ignorable="d"
-        Title="Test_Control" Height="342.898" Width="369.132">
+        Title="Test_Control" Height="342.898" Width="369.132" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="12*"/>
