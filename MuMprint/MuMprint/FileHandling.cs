@@ -88,15 +88,17 @@ namespace FileHandling
                 doc.AppendChild(Project);
             int i = 0;
             //string xml = "<?xml version=\"1.0\" encoding=\"utf - 8\" standalone=\"yes\"?> \r\n <" + Project.Name + ">";
+            System.Xml.XmlNode CurNode;
 
             foreach (var item in objects)
             {
                 i++;
-                Project.AppendChild(doc.CreateElement("Command" + i.ToString()));
-                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
-                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
-                Project.SelectSingleNode("Command" + i.ToString()).Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
+                CurNode = Project.AppendChild(doc.CreateElement("Command"));
+                CurNode.Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
+                CurNode.Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
+                CurNode.Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
             }
+
             doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
         }
         
