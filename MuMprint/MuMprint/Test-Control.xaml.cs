@@ -54,6 +54,7 @@ namespace MuMprint
         private void home_button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28");
+            Printing.Printing.Commands.Clear();
             Printing.Printing.Commands.Add(com);
             FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
