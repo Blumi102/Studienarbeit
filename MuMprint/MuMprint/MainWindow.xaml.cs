@@ -48,6 +48,17 @@ namespace MuMprint
         {
             ProgressBar1.Value = ProgressBar1.Value + 1;
             XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory +@"\Commands.xml");
+
+            try
+            {
+                TCP_Client.CreateTCPClient("192.168.2.117", Environment.CurrentDirectory + @"\Commands.xml");
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Die TCP-Verbindung konnte nicht aufgebaut werden!\r\nBitte versuchen Sie es erneut.\r\n\r\nError-Beschreibung:\r\n" + ex.Message, "Öffnen - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw;
+            }
         }
 
         private void Durchsuchen_Click(object sender, RoutedEventArgs e)
