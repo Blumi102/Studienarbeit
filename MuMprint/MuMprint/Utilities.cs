@@ -93,9 +93,17 @@ namespace MuMprint
             }
         }
 
-        public static void SetFan(string _FanValue, Command Com)
+        public static int SetFan(string _FanValue, Command Com)
         {
-            Printing.Printing.Fan = GetValue('S', _FanValue) > 0;
+            if (GetValue('S', _FanValue) > 0)
+            {
+               return  1;
+            }
+            else
+            {
+               return -1;
+            }
+            
         }
 
         public static double GetValue(char axis, string _setValue)

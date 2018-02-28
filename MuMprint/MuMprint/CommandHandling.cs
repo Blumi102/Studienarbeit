@@ -21,7 +21,8 @@ namespace CommandHandling
         public Instructions Instruction = Instructions.NaN;
         public Point3D coordinates = new Point3D(0, 0, 0);
         public double E = 0.0;
-
+        public int Fan = 0;
+        
         public Command(string CurLine)
         {
             int trenner = CurLine.IndexOf(" ");
@@ -111,7 +112,7 @@ namespace CommandHandling
                 case "M106":
                     Instruction = Instructions.M106;
                     //Lüfter einschalten
-                    Utilities.SetFan(_Value, this);
+                    this.Fan = Utilities.SetFan(_Value, this);
                     return;
 
                 case "M109":

@@ -97,8 +97,10 @@ namespace FileHandling
                     CurNode.Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
                     CurNode.Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
                     CurNode.Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
-                }
-                doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
+                    CurNode.Attributes.Append(doc.CreateAttribute("L")).InnerText = item.Fan.ToString();
+
+            }
+            doc.Save(XMLpath); //Speichern des im RAM liegenden XML Dokuments auf die Festplatte
             }
         
         }
