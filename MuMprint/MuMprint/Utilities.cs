@@ -80,17 +80,22 @@ namespace MuMprint
             }
         }
 
-        public static void GetTemp(string _setValue, Command com)
+        public static void GetTemp(string _TempValue, Command com)
         {
             //Temperatur in °C
-            if (Printing.Printing.RelativeCoordinates == false & _setValue.Contains("S")) //absolute Bemaßung
+            if (Printing.Printing.RelativeCoordinates == false & _TempValue.Contains("S"))
             {
-                Printing.Printing.Temp = GetValue('S', _setValue);
+                Printing.Printing.Temp = GetValue('S', _TempValue);
             }
-            else //relative Bemaßung oder nicht enthalten
+            else //nicht enthalten
             {
-                // this.coordinates.X = CurX - x;
+               
             }
+        }
+
+        public static void SetFan(string _FanValue, Command Com)
+        {
+            Printing.Printing.Fan = GetValue('S', _FanValue) > 0;
         }
 
         public static double GetValue(char axis, string _setValue)
@@ -117,6 +122,8 @@ namespace MuMprint
 
             return Convert.ToDouble(Value.Replace('.', ','));
         }
+
+        
 
     }
 }

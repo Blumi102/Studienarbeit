@@ -110,12 +110,14 @@ namespace CommandHandling
 
                 case "M106":
                     Instruction = Instructions.M106;
-                    //Lüftergeschwindigkeit
+                    //Lüfter einschalten
+                    Utilities.SetFan(_Value, this);
                     return;
 
                 case "M109":
                     Instruction = Instructions.M109;
                     //Aufheizen Extruder (mit Temperaturüberwachung)
+                    Utilities.GetTemp(_Value, this);
                     return;
 
                 default:
