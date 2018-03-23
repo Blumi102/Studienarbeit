@@ -87,7 +87,6 @@ namespace FileHandling
                     XmlNode Project = doc.CreateElement("My3DPrintingProject");
                     doc.AppendChild(Project);
                 int i = 0;
-                //string xml = "<?xml version=\"1.0\" encoding=\"utf - 8\" standalone=\"yes\"?> \r\n <" + Project.Name + ">";
                 System.Xml.XmlNode CurNode;
 
                 foreach (var item in objects)
@@ -97,6 +96,8 @@ namespace FileHandling
                     CurNode.Attributes.Append(doc.CreateAttribute("Z")).InnerText = item.coordinates.Z.ToString().Replace(',', '.');
                     CurNode.Attributes.Append(doc.CreateAttribute("Y")).InnerText = item.coordinates.Y.ToString().Replace(',', '.');
                     CurNode.Attributes.Append(doc.CreateAttribute("X")).InnerText = item.coordinates.X.ToString().Replace(',', '.');
+                    CurNode.Attributes.Append(doc.CreateAttribute("E")).InnerText = item.E.ToString().Replace(',', '.');
+                    CurNode.Attributes.Append(doc.CreateAttribute("T")).InnerText = item.Temp.ToString();
                     CurNode.Attributes.Append(doc.CreateAttribute("L")).InnerText = item.Fan.ToString();
 
             }

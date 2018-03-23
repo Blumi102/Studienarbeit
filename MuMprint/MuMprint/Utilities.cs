@@ -80,17 +80,11 @@ namespace MuMprint
             }
         }
 
-        public static void GetTemp(string _TempValue, Command com)
+        public static double GetTemp(string _TempValue, Command com)
         {
             //Temperatur in °C
-            if (Printing.Printing.RelativeCoordinates == false & _TempValue.Contains("S"))
-            {
-                Printing.Printing.Temp = GetValue('S', _TempValue);
-            }
-            else //nicht enthalten
-            {
-               
-            }
+           return GetValue('S', _TempValue);         
+           
         }
 
         public static int SetFan(string _FanValue, Command Com)

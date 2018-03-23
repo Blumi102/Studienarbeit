@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,37 @@ namespace MuMprint
 
     class TCP_Client
     {
+        public static string ip;
+
+        public static List<string> GetHosts(string hostname)
+        {
+            List<string> ips = new List<string>();
+
+            try
+            {
+                IPHostEntry hostInfo;
+
+                // Versuche die DNS für die übergebenen Host und IP-Adressen aufzulösen
+                hostInfo = Dns.GetHostEntry(hostname);
+
+                foreach (IPAddress ipaddr in hostInfo.AddressList)
+                {
+                    if (ipaddr.ToString().Contains("."))
+                    {
+                        ips.Add(ipaddr.ToString());
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("\tUnable to resolve host: " + hostname + "\n");
+            }
+
+            return ips;
+        }
+
+
         public static void CreateTCPClient(string ip, string XMLpath)
         {
             TcpClient client = new TcpClient();

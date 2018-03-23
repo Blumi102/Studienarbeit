@@ -21,6 +21,7 @@ namespace CommandHandling
         public Instructions Instruction = Instructions.NaN;
         public Point3D coordinates = new Point3D(0, 0, 0);
         public double E = 0.0;
+        public double Temp = 0.0;
         public int Fan = 0;
         
         public Command(string CurLine)
@@ -107,6 +108,7 @@ namespace CommandHandling
                 case "M104":
                     Instruction = Instructions.M104;
                     //Aufheizen Extruder (ohne Temperaturüberwachung)
+                    this.Temp = Utilities.GetTemp(_Value, this);
                     return;
 
                 case "M106":
@@ -118,7 +120,7 @@ namespace CommandHandling
                 case "M109":
                     Instruction = Instructions.M109;
                     //Aufheizen Extruder (mit Temperaturüberwachung)
-                    Utilities.GetTemp(_Value, this);
+                    this.Temp = Utilities.GetTemp(_Value, this);
                     return;
 
                 default:

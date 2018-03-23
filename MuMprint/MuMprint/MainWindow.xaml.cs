@@ -51,7 +51,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient("192.168.2.117", Environment.CurrentDirectory + @"\Commands.xml");
+                TCP_Client.CreateTCPClient("raspberrypi", Environment.CurrentDirectory + @"\Commands.xml");
             }
 
             catch (Exception ex)
