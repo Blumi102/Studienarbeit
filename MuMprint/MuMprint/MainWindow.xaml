@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MuMprint"
         mc:Ignorable="d"
         Title="MuMprint" Height="694.636" Width="863.41">
-    <Grid>
+    <Grid GotFocus="Grid_GotFocus">
         <Button x:Name="Durchsuchen" Content="Durchsuchen" HorizontalAlignment="Left" Margin="685,30,0,0" VerticalAlignment="Top" Width="139" Height="26" Click="Durchsuchen_Click"/>
         <ProgressBar x:Name="ProgressBar1" Margin="30,0,32.8,163.8" Height="23" VerticalAlignment="Bottom" Value="60" SmallChange="1" Foreground="#FF009999" ValueChanged="ProgressBar1_ValueChanged"/>
         <TextBox x:Name="PfadGcode" HorizontalAlignment="Left" Height="27" Margin="95,30,0,0" TextWrapping="Wrap" Text="Dateipfad" VerticalAlignment="Top" Width="585" VerticalContentAlignment="Center"/>
@@ -21,7 +21,7 @@
         <Canvas HorizontalAlignment="Left" Height="302" Margin="30,118,0,0" VerticalAlignment="Top" Width="493" Background="#FFEBEBEB"/>
         <Label x:Name="Label2" Content="Vorschau:" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="30,82,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Label3" Content="Fortschritt:" HorizontalAlignment="Left" FontSize="16" FontWeight="Bold" Margin="30,435,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LabelVoraussZeit" Content="Voraussichtliche Druckdauer: " HorizontalAlignment="Left" Margin="528,118,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LabelVoraussZeit" Content="Voraussichtliche Druckdauer: " HorizontalAlignment="Left" Margin="529,254,0,0" VerticalAlignment="Top"/>
         <Label x:Name="VoraussZeit" Content="" HorizontalAlignment="Left" Margin="698,118,0,0" VerticalAlignment="Top"/>
         <Viewport3D x:Name="viewport" HorizontalAlignment="Left" Height="302" Margin="30,118,0,0" VerticalAlignment="Top" Width="493">
             <Viewport3D.Camera>
@@ -31,5 +31,16 @@
             </ModelVisual3D>
         </Viewport3D>
         <Button x:Name="Manuell_Button" Content="Manuell" HorizontalAlignment="Left" Margin="30,599,0,0" VerticalAlignment="Top" Width="96" Height="36" Click="Manuell_Button_Click"/>
+        <Button x:Name="GetHost_Button" Content="Select Printer ..." HorizontalAlignment="Left" Margin="537,121,0,0" VerticalAlignment="Top" Width="262" Click="GetHost_Button_Click" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.165"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBlock x:Name="Connected_Box" HorizontalAlignment="Left" Margin="544,151,0,0" TextWrapping="Wrap" Text="not connected" VerticalAlignment="Top" Height="22" Width="256"/>
     </Grid>
 </Window>

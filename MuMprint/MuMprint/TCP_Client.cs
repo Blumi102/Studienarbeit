@@ -18,7 +18,7 @@ namespace MuMprint
 
     class TCP_Client
     {
-        public static string ip;
+        public static string ip = "0";
 
         public static List<string> GetHosts(string hostname)
         {

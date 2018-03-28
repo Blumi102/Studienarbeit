@@ -41,7 +41,7 @@ namespace MuMprint
 
             try 
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -60,7 +60,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -96,7 +96,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -114,7 +114,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -132,7 +132,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -168,7 +168,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {
@@ -186,7 +186,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient(IP_Box.Text, Environment.CurrentDirectory + @"\Test.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Test.xml");
             }
             catch (Exception ex)
             {

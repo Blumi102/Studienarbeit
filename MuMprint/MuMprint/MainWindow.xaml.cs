@@ -51,7 +51,7 @@ namespace MuMprint
 
             try
             {
-                TCP_Client.CreateTCPClient("raspberrypi", Environment.CurrentDirectory + @"\Commands.xml");
+                TCP_Client.CreateTCPClient(TCP_Client.ip, Environment.CurrentDirectory + @"\Commands.xml");
             }
 
             catch (Exception ex)
@@ -86,5 +86,20 @@ namespace MuMprint
             Test_Control ControlWindow = new Test_Control();
             ControlWindow.Show();
         }
+
+        private void GetHost_Button_Click(object sender, RoutedEventArgs e)
+        {
+            SelectHost SelectWindow = new SelectHost("MuMprint");
+            SelectWindow.Show();
+        }
+
+        //private void Grid_GotFocus(object sender, RoutedEventArgs e)
+        //{
+        //    if (!(TCP_Client.ip == "0"))
+        //    {
+        //        Connected_Box.Text = "Connected to " + TCP_Client.ip;
+        //    }
+            
+        //}
     }
 }

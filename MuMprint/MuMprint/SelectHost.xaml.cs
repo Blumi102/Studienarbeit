@@ -32,6 +32,8 @@ namespace MuMprint
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
+
+            //Application.Current.
             TCP_Client.ip = Hosts_Box.SelectedItem.ToString();
             this.Close();
         }

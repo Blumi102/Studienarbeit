@@ -41,7 +41,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBox x:Name="IP_Box" HorizontalAlignment="Left" Height="23" Margin="40,447,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Width="120" GotFocus="e_box_GotFocus" Grid.Column="1"/>
         <TextBlock x:Name="Hostname_Label" Grid.Column="1" HorizontalAlignment="Left" Margin="40,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="120"/>
         <TextBlock x:Name="IP_label" Grid.Column="1" HorizontalAlignment="Left" Margin="183,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="120"/>
 
