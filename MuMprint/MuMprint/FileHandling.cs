@@ -21,10 +21,6 @@ namespace FileHandling
         /// </returns>
         /// 
 
-        public static double curX = 0.0;
-        public static double curY = 0.0;
-        public static double curZ = 0.0;
-        public static double curE = 0.0;
 
         public static string HandleGCode()
         {
@@ -40,16 +36,16 @@ namespace FileHandling
                 {
                     StreamReader OpenedFile = new StreamReader(OpenGC.FileName);
                     String CurLine = "";
-                    Printing.Printing.Commands.Clear();
+                    Printing.PrintingParameters.Commands.Clear();
 
                     while (!OpenedFile.EndOfStream)
                     {
                         CurLine = OpenedFile.ReadLine();
 
-                        if (!CurLine.StartsWith(";")) //hide commands
+                        if (!CurLine.StartsWith(";")& !CurLine.StartsWith("M107")) //hide commands
                         {
                             Command com = new Command(CurLine);
-                            Printing.Printing.Commands.Add(com);
+                            Printing.PrintingParameters.Commands.Add(com);
                         }
                     }
 

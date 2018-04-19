@@ -18,7 +18,8 @@ namespace MuMprint
 
     class TCP_Client
     {
-        public static string ip = "0";
+        //Zurück auf Null stellen!!!
+        public static string ip = "192.168.2.1";
 
         public static List<string> GetHosts(string hostname)
         {

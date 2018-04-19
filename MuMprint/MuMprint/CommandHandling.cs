@@ -65,18 +65,25 @@ namespace CommandHandling
                     if (_Value.Contains("X"))
                     {
                         this.coordinates.X = - 1000;
+                        Printing.PrintingParameters.CurPoint.X = 0;
                     }
                     if (_Value.Contains("Y"))
                     {
                         this.coordinates.Y = - 1000;
+                        Printing.PrintingParameters.CurPoint.Y = 0;
+
                     }
                     if (_Value.Contains("Z"))
                     {
                         this.coordinates.Z = - 1000;
+                        Printing.PrintingParameters.CurPoint.Z = 0;
+
                     }
                     if (_Value.Contains("E"))
                     {
                         this.E = - 1000;
+                        Printing.PrintingParameters.CurE = 0;
+
                     }
                     if (!_Value.Contains("X") & !_Value.Contains("Y") & !_Value.Contains("Z") & !_Value.Contains("E"))
                     {
@@ -84,19 +91,25 @@ namespace CommandHandling
                         this.coordinates.Y = - 1000;
                         this.coordinates.Z = - 1000;
                         this.E = - 1000;
+
+                        Printing.PrintingParameters.CurPoint.X = 0;
+                        Printing.PrintingParameters.CurPoint.Y = 0;
+                        Printing.PrintingParameters.CurPoint.Z = 0;
+                        Printing.PrintingParameters.CurE = 0;
+
                     }
                     return;
 
                 case "G90":
                     Instruction = Instructions.G90;
                     //Absolute Positionierung
-                    Printing.Printing.RelativeCoordinates = false;
+                    Printing.PrintingParameters.RelativeCoordinates = false;
                     return;
 
                 case "G91":
                     Instruction = Instructions.G91;
                     //Relative Positionierung
-                    Printing.Printing.RelativeCoordinates = true;
+                    Printing.PrintingParameters.RelativeCoordinates = true;
                     return;
 
                 case "G92":
@@ -127,7 +140,7 @@ namespace CommandHandling
                     Instruction = Instructions.NaN;
                     //Fehler: Befehl wurde nicht erkannt
                     MessageBox.Show("Der eingelesene Befehl wurde nicht erkannt.", "Befehls - Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-                    MessageBox.Show(_Value.ToString());
+                    MessageBox.Show(_Command.ToString());
                     break;
             }
         }

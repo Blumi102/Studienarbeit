@@ -22,7 +22,7 @@ namespace MuMprint
 
         public SelectHost(string hostname)
         {
-            InitializeComponent();
+            InitializeComponent();  
 
             foreach (string item in TCP_Client.GetHosts(hostname))
             {
@@ -32,12 +32,17 @@ namespace MuMprint
 
         private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
-
-            //MuMprint.MainWindow main = Application.Current.MainWindow;
-            //main.Connected_Box.Text = TCP_Client.ip;
-            //main.Show();
-            TCP_Client.ip = Hosts_Box.SelectedItem.ToString();
+            MuMprint.MainWindow main = Application.Current.MainWindow as MuMprint.MainWindow;
+            main.Connected_Box.Text = "Connected to " + TCP_Client.ip;
+            main.IsEnabled = true;
+            //TCP_Client.ip = Hosts_Box.SelectedItem.ToString();
             this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MuMprint.MainWindow main = Application.Current.MainWindow as MuMprint.MainWindow;
+            main.IsEnabled = true;
         }
     }
 }

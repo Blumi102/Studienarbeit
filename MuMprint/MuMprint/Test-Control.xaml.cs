@@ -35,9 +35,9 @@ namespace MuMprint
             string e = e_box.Text;
 
             Command com = new Command("G92 X" + x + " Y" + y + " Z" + z + "E" + e);
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try 
             {
@@ -54,9 +54,9 @@ namespace MuMprint
         private void home_button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -72,9 +72,9 @@ namespace MuMprint
         private void x_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 X");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -90,9 +90,9 @@ namespace MuMprint
         private void y_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 Y");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -108,9 +108,9 @@ namespace MuMprint
         private void z_home_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("G28 Z");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -126,9 +126,9 @@ namespace MuMprint
         private void Fan_On_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("M106 S1");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -144,9 +144,9 @@ namespace MuMprint
         private void Fan_Off_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("M106 S0");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -162,9 +162,9 @@ namespace MuMprint
         private void Heat_On_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("M104 S1");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -180,9 +180,9 @@ namespace MuMprint
         private void Heat_Off_Button_Click(object sender, RoutedEventArgs e)
         {
             Command com = new Command("M104 S-1");
-            Printing.Printing.Commands.Clear();
-            Printing.Printing.Commands.Add(com);
-            FileHandling.XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory + @"\Test.xml");
+            Printing.PrintingParameters.Commands.Clear();
+            Printing.PrintingParameters.Commands.Add(com);
+            FileHandling.XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory + @"\Test.xml");
 
             try
             {
@@ -217,7 +217,9 @@ namespace MuMprint
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Printing.Printing.Commands.Clear();
+            Printing.PrintingParameters.Commands.Clear();
+            MuMprint.MainWindow main = Application.Current.MainWindow as MuMprint.MainWindow;
+            main.IsEnabled = true;
         }
 
         private void GetHost_Button_Click(object sender, RoutedEventArgs e)

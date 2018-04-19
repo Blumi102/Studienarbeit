@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FileHandling;
 using System.Windows.Media.Media3D;
+using System.Net.Sockets;
 
 namespace MuMprint
 {
@@ -47,7 +48,7 @@ namespace MuMprint
         private void StartDruck_Click(object sender, RoutedEventArgs e)
         {
             ProgressBar1.Value = ProgressBar1.Value + 1;
-            XMLCreator.CreatXML(Printing.Printing.Commands, Environment.CurrentDirectory +@"\Commands.xml");
+            XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory +@"\Commands.xml");
 
             try
             {
@@ -81,25 +82,40 @@ namespace MuMprint
 
         private void Manuell_Button_Click(object sender, RoutedEventArgs e)
         {
-            Printing.Printing.Commands.Clear();
+            Printing.PrintingParameters.Commands.Clear();
             PfadGcode.Text = "Dateipfad";
             Test_Control ControlWindow = new Test_Control();
             ControlWindow.Show();
+            this.IsEnabled = false;
         }
 
         private void GetHost_Button_Click(object sender, RoutedEventArgs e)
         {
             SelectHost SelectWindow = new SelectHost("MuMprint");
             SelectWindow.Show();
+            this.IsEnabled = false;
         }
 
-        //private void Grid_GotFocus(object sender, RoutedEventArgs e)
-        //{
-        //    if (!(TCP_Client.ip == "0"))
-        //    {
-        //        Connected_Box.Text = "Connected to " + TCP_Client.ip;
-        //    }
-            
-        //}
+        private void AbbrechenDruck_Click(object sender, RoutedEventArgs e)
+        {
+            TcpClient client = new TcpClient();
+
+            try
+            {
+                client.Connect(MuMprint.TCP_Client.ip, 8000);
+                NetworkStream stream = client.GetStream();
+                byte[] bytes = new byte[1];
+                bytes[1] = Convert.ToByte('c');
+                stream.Write(bytes, 0, 1);
+                stream.Close();
+                client.Close();
+            }
+
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+
+        }
     }
 }

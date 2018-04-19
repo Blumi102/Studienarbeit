@@ -13,7 +13,7 @@
         <Label x:Name="Label1" Content="G-Code:" HorizontalAlignment="Left" Margin="30,30,0,0" VerticalAlignment="Top"/>
         <Button x:Name="StartDruck" Content="Druck starten" IsEnabled="True" Margin="0,0,231.8,29.8" HorizontalAlignment="Right" Width="96" Height="36" VerticalAlignment="Bottom" Click="StartDruck_Click"/>
         <Button x:Name="PauseDruck" Content="Pause" IsEnabled="False" Margin="0,0,130.8,29.8" HorizontalAlignment="Right" Width="96" Height="36" VerticalAlignment="Bottom"/>
-        <Button x:Name="AbbrechenDruck" Content="Abbrechen" IsEnabled="False" Margin="0,0,32.8,29.8" HorizontalAlignment="Right" Width="93" Height="36" VerticalAlignment="Bottom"/>
+        <Button x:Name="AbbrechenDruck" Content="Abbrechen" IsEnabled="False" Margin="0,0,32.8,29.8" HorizontalAlignment="Right" Width="93" Height="36" VerticalAlignment="Bottom" Click="AbbrechenDruck_Click"/>
         <Label x:Name="Label5" Content="Verbleibende Zeit:" HorizontalAlignment="Left" Height="30" Margin="30,537,0,0" VerticalAlignment="Top" Width="107"/>
         <Label x:Name="Restzeit" Content="Unbekannt" HorizontalAlignment="Left" Margin="142,537,0,0" VerticalAlignment="Top" Width="167" Height="30"/>
         <Label x:Name="Label4" Content="Abgeschlossen:" HorizontalAlignment="Left" Margin="30,506,0,0" VerticalAlignment="Top"/>

@@ -20,61 +20,73 @@ namespace MuMprint
             //X-Koordinate
             if (ComandValue.Contains("X")) 
             {
-                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                if (Printing.PrintingParameters.RelativeCoordinates == true) //relativ Bemaßung
                 {
                     Com.coordinates.X = GetValue('X', ComandValue);
                 }
                 else //absolute Bemaßung
                 {
-                    Com.coordinates.X = GetValue('X', ComandValue) - FileHandling.GCodeReader.curX;
+                    Com.coordinates.X = GetValue('X', ComandValue) - Printing.PrintingParameters.CurPoint.X;
                 }
+
+                Printing.PrintingParameters.CurPoint.X = Printing.PrintingParameters.CurPoint.X + Com.coordinates.X;
+
             }
 
             //Y-Koordinate
             if (ComandValue.Contains("Y"))
             {
-                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                if (Printing.PrintingParameters.RelativeCoordinates == true) //relativ Bemaßung
                 {
                     Com.coordinates.Y = GetValue('Y', ComandValue);
                 }
                 else //absolute Bemaßung
                 {
-                    Com.coordinates.Y = GetValue('Y', ComandValue) - FileHandling.GCodeReader.curY;
+                    Com.coordinates.Y = GetValue('Y', ComandValue) - Printing.PrintingParameters.CurPoint.Y;
                 }
+
+                Printing.PrintingParameters.CurPoint.Y = Printing.PrintingParameters.CurPoint.Y + Com.coordinates.Y;
             }
 
             //Z-Koordinate
             if (ComandValue.Contains("Z"))
             {
-                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                if (Printing.PrintingParameters.RelativeCoordinates == true) //relativ Bemaßung
                 {
                     Com.coordinates.Z = GetValue('Z', ComandValue);
+
                 }
                 else //absolute Bemaßung
                 {
-                    Com.coordinates.Z = GetValue('Z', ComandValue) - FileHandling.GCodeReader.curZ;
+                    Com.coordinates.Z = GetValue('Z', ComandValue) - Printing.PrintingParameters.CurPoint.Z;
                 }
+
+                Printing.PrintingParameters.CurPoint.Z = Printing.PrintingParameters.CurPoint.Z + Com.coordinates.Z;
+
             }
 
-            //E-Koordinate
-            if (ComandValue.Contains("E"))
+                //E-Koordinate
+                if (ComandValue.Contains("E"))
             {
-                if (Printing.Printing.RelativeCoordinates == true) //relative Bemaßung
+                if (Printing.PrintingParameters.RelativeCoordinates == true) //relativ Bemaßung
                 {
                     Com.E = GetValue('E', ComandValue);
                 }
                 else //absolute Bemaßung
                 {
-                    Com.E = GetValue('E', ComandValue) - FileHandling.GCodeReader.curE;
+                    Com.E = GetValue('E', ComandValue) - Printing.PrintingParameters.CurE;
                 }
+
+                Printing.PrintingParameters.CurE = Printing.PrintingParameters.CurE + Com.E;
+
             }
 
-            //Geschwindigkeit
-            if (Printing.Printing.RelativeCoordinates == false & ComandValue.Contains("F")) //absolute Bemaßung
+                //Geschwindigkeit
+                if (Printing.PrintingParameters.RelativeCoordinates == false & ComandValue.Contains("F")) //relativ Bemaßung
             {
-                Printing.Printing.Speed = GetValue('F', ComandValue);         
+                Printing.PrintingParameters.Speed = GetValue('F', ComandValue);         
             }
-            else //relative Bemaßung
+            else //absolute Bemaßung
             {
                 // this.coordinates.X = CurX - x;
             }

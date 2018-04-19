@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuMprint"
         mc:Ignorable="d"
-        Title="SelectHost" Height="300" Width="300">
+        Title="SelectHost" Height="300" Width="300" Closed="Window_Closed">
     <Grid>
-        <ListBox x:Name="Hosts_Box" HorizontalAlignment="Left" Height="159" Margin="26,49,0,0" VerticalAlignment="Top" Width="236"/>
-        <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" Text="Bitte wählen Sie den gewünschten Drucker aus!" VerticalAlignment="Top" Height="39" Width="236"/>
-        <Button x:Name="OK_Button" Content="OK" HorizontalAlignment="Left" Margin="26,218,0,0" VerticalAlignment="Top" Width="236" Click="OK_Button_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="205*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="Hosts_Box" HorizontalAlignment="Left" Height="159" Margin="26,49,0,0" VerticalAlignment="Top" Width="236" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" Text="Bitte wählen Sie den gewünschten Drucker aus!" VerticalAlignment="Top" Height="39" Width="236" Grid.ColumnSpan="2"/>
+        <Button x:Name="OK_Button" Content="OK" HorizontalAlignment="Left" Margin="26,218,0,0" VerticalAlignment="Top" Width="236" Click="OK_Button_Click" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
