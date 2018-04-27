@@ -19,7 +19,7 @@ namespace MuMprint
     class TCP_Client
     {
         //Zurück auf Null stellen!!!
-        public static string ip = "192.168.2.1";
+        public static string ip = "192.168.2.200";
 
         public static List<string> GetHosts(string hostname)
         {
@@ -32,6 +32,8 @@ namespace MuMprint
                 // Versuche die DNS für die übergebenen Host und IP-Adressen aufzulösen
                 hostInfo = Dns.GetHostEntry(hostname);
 
+                MessageBox.Show(hostInfo.ToString());
+
                 foreach (IPAddress ipaddr in hostInfo.AddressList)
                 {
                     if (ipaddr.ToString().Contains("."))
@@ -39,11 +41,10 @@ namespace MuMprint
                         ips.Add(ipaddr.ToString());
                     }
                 }
-
             }
             catch (Exception)
             {
-                Console.WriteLine("\tUnable to resolve host: " + hostname + "\n");
+                MessageBox.Show("Unable to resolve host: " + hostname + "\n");
             }
 
             return ips;
@@ -60,10 +61,17 @@ namespace MuMprint
 //https://www.entwickler-ecke.de/topic_Datei+ueber+Stream+versenden_100789.html&sid=ed63cf0d58e1e84100e96567d6727cad
 
                 NetworkStream stream = client.GetStream();
-
                 FileStream fs = File.OpenRead(XMLpath);
+
                 byte[] bytes = new byte[fs.Length];
                 fs.Read(bytes, 0, bytes.Length);
+
+                //Transfer File Size
+                System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
+                stream.Write(enc.GetBytes(bytes.Length.ToString()), 0, enc.GetBytes(bytes.Length.ToString()).Length);
+                MessageBox.Show(bytes.Length.ToString());
+
+                //Transfer Data
                 stream.Write(bytes, 0, bytes.Length);
                 fs.Close();
                 stream.Close();
