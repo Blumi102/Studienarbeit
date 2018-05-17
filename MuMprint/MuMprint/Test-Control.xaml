@@ -5,32 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MuMprint"
         mc:Ignorable="d"
-        Title="Test_Control" Height="437.216" Width="369.132" Closing="Window_Closing">
+        Title="Test_Control" Height="545.171" Width="369.132" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="12*"/>
             <ColumnDefinition Width="162*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="x_box" HorizontalAlignment="Left" Height="23" Margin="40,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="x_box_GotFocus" Grid.Column="1" />
-        <TextBox x:Name="y_box" HorizontalAlignment="Left" Height="23" Margin="40,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="y_box_GotFocus" Grid.Column="1" />
-        <TextBox x:Name="z_box" HorizontalAlignment="Left" Height="23" Margin="40,121,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="z_box_GotFocus" Grid.Column="1"/>
-        <Label Content="x" HorizontalAlignment="Left" Margin="5,34,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
-        <Label Content="z" HorizontalAlignment="Left" Margin="5,117,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
-        <Label Content="y" HorizontalAlignment="Left" Margin="5,76,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
-        <Button x:Name="OK_button" Content="OK!" HorizontalAlignment="Left" Margin="40,207,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Grid.Column="1" Height="19"/>
-        <Button x:Name="home_button" Content="Homing (all axis)" HorizontalAlignment="Left" Margin="183,207,0,0" VerticalAlignment="Top" Width="120" Click="home_button_Click" Grid.Column="1" Height="19"/>
-        <Button x:Name="x_home_Button" Content="Homing (x axis)" HorizontalAlignment="Left" Margin="183,36,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="x_home_Button_Click"/>
-        <Button x:Name="y_home_Button" Content="Homing (y axis)" HorizontalAlignment="Left" Margin="183,79,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="y_home_Button_Click"/>
-        <Button x:Name="z_home_Button" Content="homing (z axis)" HorizontalAlignment="Left" Margin="183,120,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="z_home_Button_Click"/>
-        <TextBox x:Name="e_box" HorizontalAlignment="Left" Height="23" Margin="40,166,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="e_box_GotFocus" Grid.Column="1"/>
-        <Label Content="E" HorizontalAlignment="Left" Margin="5,162,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
-        <Label x:Name="label_Copy" Content="Lüfter" HorizontalAlignment="Left" Margin="40,242,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="61"/>
-        <Button x:Name="Fan_On_Button" Content="ON" HorizontalAlignment="Left" Margin="40,274,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Fan_On_Button_Click"/>
-        <Button x:Name="Fan_Off_Button" Content="OFF" HorizontalAlignment="Left" Margin="183,274,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Fan_Off_Button_Click"/>
-        <Label x:Name="label_Copy1" Content="Heizelement" HorizontalAlignment="Left" Margin="40,311,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="92"/>
-        <Button x:Name="Heat_On_Button" Content="ON" HorizontalAlignment="Left" Margin="40,343,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Heat_On_Button_Click"/>
-        <Button x:Name="Heat_Off_Button" Content="OFF" HorizontalAlignment="Left" Margin="183,343,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Heat_Off_Button_Click"/>
+        <TextBox x:Name="x_box" HorizontalAlignment="Left" Height="23" Margin="40,90,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="x_box_GotFocus" Grid.Column="1" />
+        <TextBox x:Name="y_box" HorizontalAlignment="Left" Height="23" Margin="40,133,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="y_box_GotFocus" Grid.Column="1" />
+        <TextBox x:Name="z_box" HorizontalAlignment="Left" Height="23" Margin="40,174,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="z_box_GotFocus" Grid.Column="1"/>
+        <Label Content="x" HorizontalAlignment="Left" Margin="5,87,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
+        <Label Content="z" HorizontalAlignment="Left" Margin="5,170,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
+        <Label Content="y" HorizontalAlignment="Left" Margin="5,129,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
+        <Button x:Name="OK_button" Content="OK!" HorizontalAlignment="Left" Margin="40,260,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Grid.Column="1" Height="19"/>
+        <Button x:Name="home_button" Content="Homing (all axis)" HorizontalAlignment="Left" Margin="183,260,0,0" VerticalAlignment="Top" Width="120" Click="home_button_Click" Grid.Column="1" Height="19"/>
+        <Button x:Name="x_home_Button" Content="Homing (x axis)" HorizontalAlignment="Left" Margin="183,89,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="x_home_Button_Click"/>
+        <Button x:Name="y_home_Button" Content="Homing (y axis)" HorizontalAlignment="Left" Margin="183,132,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="y_home_Button_Click"/>
+        <Button x:Name="z_home_Button" Content="homing (z axis)" HorizontalAlignment="Left" Margin="183,173,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="z_home_Button_Click"/>
+        <TextBox x:Name="e_box" HorizontalAlignment="Left" Height="23" Margin="40,219,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" GotFocus="e_box_GotFocus" Grid.Column="1"/>
+        <Label Content="E" HorizontalAlignment="Left" Margin="5,215,0,0" VerticalAlignment="Top" Height="27" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="16"/>
+        <Label x:Name="label_Copy" Content="Lüfter" HorizontalAlignment="Left" Margin="40,295,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="61"/>
+        <Button x:Name="Fan_On_Button" Content="ON" HorizontalAlignment="Left" Margin="40,327,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Fan_On_Button_Click"/>
+        <Button x:Name="Fan_Off_Button" Content="OFF" HorizontalAlignment="Left" Margin="183,327,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Fan_Off_Button_Click"/>
+        <Label x:Name="label_Copy1" Content="Heizelement" HorizontalAlignment="Left" Margin="40,364,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="92"/>
+        <Button x:Name="Heat_On_Button" Content="ON" HorizontalAlignment="Left" Margin="40,396,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Heat_On_Button_Click"/>
+        <Button x:Name="Heat_Off_Button" Content="OFF" HorizontalAlignment="Left" Margin="183,396,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Height="19" Click="Heat_Off_Button_Click"/>
+        <Button x:Name="Absolut_button" Content="Absolut" Grid.Column="1" HorizontalAlignment="Left" Margin="40,35,0,0" VerticalAlignment="Top" Width="120" Click="Absolut_button_Click" />
+        <Button x:Name="Relativ_Button" Content="Relativ" Grid.Column="1" HorizontalAlignment="Left" Margin="183,35,0,0" VerticalAlignment="Top" Width="120" Click="Relativ_Button_Click" />
+        <Label x:Name="label_Copy2" Content="Bemaßung" HorizontalAlignment="Left" Margin="40,3,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="107"/>
+        <Label x:Name="label_Copy3" Content="Koordinaten" HorizontalAlignment="Left" Margin="40,59,0,0" VerticalAlignment="Top" Height="32" RenderTransformOrigin="1.546,0.514" Grid.Column="1" Width="107"/>
+        <Button Content="Get Status" Grid.Column="1" HorizontalAlignment="Left" Margin="40,452,0,0" VerticalAlignment="Top" Width="263" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

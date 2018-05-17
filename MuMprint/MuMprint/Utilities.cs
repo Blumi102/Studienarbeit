@@ -137,7 +137,15 @@ namespace MuMprint
             return Convert.ToDouble(Value.Replace('.', ','));
         }
 
-        
+        public static void Build_Preview(List<Command> commands)
+        {
+            MeshGeometry3D Preview = new MeshGeometry3D();
+            foreach (Command item in commands)
+            {
+                Preview.Positions.Add(item.coordinates);
+            }                
+
+        }
 
     }
 }

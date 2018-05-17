@@ -227,5 +227,20 @@ namespace MuMprint
             SelectHost SelectWindow = new SelectHost("MuMprint");
             SelectWindow.Show();
         }
+
+        private void Absolut_button_Click(object sender, RoutedEventArgs e)
+        {
+            Printing.PrintingParameters.RelativeCoordinates = false;
+        }
+
+        private void Relativ_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Printing.PrintingParameters.RelativeCoordinates = true;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            TCP_Client.GetPrintingStatus("192.168.2.200");
+        }
     }
 }

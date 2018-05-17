@@ -69,11 +69,49 @@ namespace MuMprint
                 //Transfer File Size
                 System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
                 stream.Write(enc.GetBytes(bytes.Length.ToString()), 0, enc.GetBytes(bytes.Length.ToString()).Length);
-                MessageBox.Show(bytes.Length.ToString());
+                MessageBox.Show("Transfered " + bytes.Length.ToString() + " Bytes");
 
                 //Transfer Data
                 stream.Write(bytes, 0, bytes.Length);
                 fs.Close();
+                stream.Close();
+                client.Close();
+
+            }
+
+            catch (Exception err)
+            {
+                MessageBox.Show(err.ToString());
+            }
+        }
+
+        public static void GetPrintingStatus(string ip)
+        {
+            TcpClient client = new TcpClient();
+            MuMprint.MainWindow main = Application.Current.MainWindow as MuMprint.MainWindow;
+            byte[] status = new byte[1024];
+            int new_status = 0;
+
+            try
+            {           
+                client.Connect(ip, 8000);
+                NetworkStream stream = client.GetStream();
+
+                MessageBox.Show("Waiting for printing status...");
+                while (status[0] <= 100)
+                {
+                    try
+                    {
+                        BinaryReader r = new BinaryReader(stream);
+                        new_status = r.Read();
+                    }
+                    finally
+                    {
+                        MessageBox.Show("Printing Status: " + new_status.ToString() + "%");
+                        main.PrintingStatus.Value = Convert.ToDouble(new_status);
+                    }
+                }
+                         
                 stream.Close();
                 client.Close();
 

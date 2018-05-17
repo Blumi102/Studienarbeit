@@ -37,7 +37,7 @@ namespace MuMprint
             //Programm status aus der Progressbar in Prozentanzeige übernehmen
             if (ProzentLabel != null)
             {
-                ProzentLabel.Content = ProgressBar1.Value.ToString() + "%";
+                ProzentLabel.Content = PrintingStatus.Value.ToString() + "%";
             }
             #endregion
 
@@ -47,7 +47,6 @@ namespace MuMprint
         #region ButtonHandling
         private void StartDruck_Click(object sender, RoutedEventArgs e)
         {
-            ProgressBar1.Value = ProgressBar1.Value + 1;
             XMLCreator.CreatXML(Printing.PrintingParameters.Commands, Environment.CurrentDirectory +@"\Commands.xml");
 
             try
@@ -75,7 +74,7 @@ namespace MuMprint
             //Programm status aus der Progressbar in Prozentanzeige übernehmen
             if (ProzentLabel != null)
             {
-                ProzentLabel.Content = ProgressBar1.Value.ToString() + "%";
+                ProzentLabel.Content = PrintingStatus.Value.ToString() + "%";
             }
         }
         #endregion
